@@ -86,18 +86,6 @@ class DeepPurpleApp(VehicleApp):
 
         await self.publish_mqtt_event(response_topic, json.dumps(response_data))
 
-    # async def onDriverActivation(self, data: DataPointReply):
-    #     isBackupOn = data.get(self.Vehicle.Body.Lights.IsBackupOn).value
-    #     logger.info("Opening Car Door")
-    #     await self.Vehicle.Cabin.Door.Row1.Left.IsOpen.set(True)
-    #     await self.Vehicle.Cabin.Lights.IsDomeOn.set(True)
-    #     if not isBackupOn:
-    #         logger.info("Activating driver 1")
-    #         await self.Vehicle.Cabin.Seat.Row1.Pos1.Height.set(0)
-    #     else:
-    #         logger.info("Activation driver 2")
-    #         await self.Vehicle.Cabin.Seat.Row1.Pos1.Height.set(100)
-
 
 async def main():
 
