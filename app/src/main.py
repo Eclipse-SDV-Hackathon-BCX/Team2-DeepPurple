@@ -18,7 +18,6 @@ import asyncio
 import json
 import logging
 import signal
-import time
 
 from sdv.util.log import (  # type: ignore
     get_opentelemetry_log_factory,
@@ -45,29 +44,16 @@ class DeepPurpleApp(VehicleApp):
         self.Vehicle = vehicle_client
 
     async def on_start(self):
-        logger.info("Reset")
-
-        await self.Vehicle.Cabin.Door.Row1.Left.IsOpen.set(False)
-
-        await self.Vehicle.Body.Lights.IsBackupOn.set(False)
-
-        # await self.Vehicle.Body.Lights.IsBackupOn.subscribe(self.onDriverActivation)
-
-        time.sleep(1)
-
-        time.sleep(3)
-
-        await self.Vehicle.Cabin.Door.Row1.Left.IsOpen.set(False)
-        await self.Vehicle.Cabin.Lights.IsDomeOn.set(False)
-        time.sleep(3)
-
-        await self.Vehicle.Cabin.Door.Row1.Left.IsOpen.set(False)
+        logger.info("on_start")
+        await self.Vehicle.Cabin.Seat.Row1.Pos1.Height.set(
+            int(data["preferredPosition"])
+        )
 
     @subscribe_topic(SET_DRIVER_TOPIC)
     async def on_set_driver_received(self, data_str: str) -> None:
         # Use the logger with the preferred log level (e.g. debug, info, error, etc)
         logger.info(
-            "PubSub event for the Topic: %s -> is received with the data: %s",
+            "topic: %s received with the data: %s",
             SET_DRIVER_TOPIC,
             data_str,
         )
