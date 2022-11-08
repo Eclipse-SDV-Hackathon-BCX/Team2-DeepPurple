@@ -23,7 +23,6 @@ from sdv.util.log import (  # type: ignore
     get_opentelemetry_log_factory,
     get_opentelemetry_log_format,
 )
-from sdv.vdb.subscriptions import DataPointReply
 from sdv.vehicle_app import VehicleApp, subscribe_topic
 from sdv_model import Vehicle, vehicle  # type: ignore
 
@@ -45,7 +44,7 @@ class DeepPurpleApp(VehicleApp):
 
     async def on_start(self):
         logger.info("on_start")
-        await self.Vehicle.Cabin.Seat.Row1.Pos1.Height.set(0)
+        await self.Vehicle.Cabin.Seat.Row1.Pos1.Position.set(0)
 
     @subscribe_topic(SET_DRIVER_TOPIC)
     async def on_set_driver_received(self, data_str: str) -> None:
@@ -64,7 +63,7 @@ class DeepPurpleApp(VehicleApp):
             "driverId": data["driverId"],
             "status": 0,
         }
-        await self.Vehicle.Cabin.Seat.Row1.Pos1.Height.set(
+        await self.Vehicle.Cabin.Seat.Row1.Pos1.Position.set(
             int(data["preferredPosition"])
         )
 
