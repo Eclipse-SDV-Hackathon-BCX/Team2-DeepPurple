@@ -378,3 +378,4 @@ get_helm.sh
 venv/
 # Mac files
 .DS_Store
+.npm
