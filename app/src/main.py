@@ -18,6 +18,7 @@ import asyncio
 import json
 import logging
 import signal
+import time
 
 from sdv.util.log import (  # type: ignore
     get_opentelemetry_log_factory,
@@ -71,6 +72,28 @@ class DeepPurpleApp(VehicleApp):
         await self.Vehicle.Cabin.Seat.Row1.Pos1.Position.set(
             int(data["preferredPosition"])
         )
+
+        lighting_profile = int(data["lightingProfile"])
+
+        if lighting_profile == 1:
+            await self.Vehicle.Body.Lights.IsRunningOn.set(True)
+            await self.Vehicle.Body.Lights.IsRunningOn.set(False)
+            time.sleep(0.4)
+            await self.Vehicle.Body.Lights.IsBreakOn(True)
+            await self.Vehicle.Body.Lights.IsBreakOn(False)
+            time.sleep(0.4)
+            await self.Vehicle.Body.Lights.IsLeftIndicatorOn(True)
+            await self.Vehicle.Body.Lights.IsLeftIndicatorOn(False)
+        elif lighting_profile == 2:
+            time.sleep(0.4)
+            await self.Vehicle.Body.Lights.IsLeftIndicatorOn(True)
+            await self.Vehicle.Body.Lights.IsLeftIndicatorOn(False)
+            time.sleep(0.4)
+            await self.Vehicle.Body.Lights.IsBreakOn(True)
+            await self.Vehicle.Body.Lights.IsBreakOn(False)
+            time.sleep(0.4)
+            await self.Vehicle.Body.Lights.IsRunningOn.set(True)
+            await self.Vehicle.Body.Lights.IsRunningOn.set(False)
 
         await self.publish_mqtt_event(response_topic, json.dumps(response_data))
 
