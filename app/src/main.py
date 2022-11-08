@@ -23,6 +23,7 @@ from sdv.util.log import (  # type: ignore
     get_opentelemetry_log_factory,
     get_opentelemetry_log_format,
 )
+from sdv.vdb.subscriptions import DataPointReply
 from sdv.vehicle_app import VehicleApp, subscribe_topic
 from sdv_model import Vehicle, vehicle  # type: ignore
 
@@ -33,6 +34,7 @@ logging.getLogger().setLevel("DEBUG")
 logger = logging.getLogger(__name__)
 
 SET_DRIVER_TOPIC = "deeppurple/setDriver"
+GET_SEAT_POSITION_TOPIC = "deeppurple/getSeatPosition"
 
 
 class DeepPurpleApp(VehicleApp):
@@ -45,6 +47,9 @@ class DeepPurpleApp(VehicleApp):
     async def on_start(self):
         logger.info("on_start")
         await self.Vehicle.Cabin.Seat.Row1.Pos1.Position.set(0)
+
+        # Callback
+        await self.Vehicle.Cabin.Seat.Row1.Pos1.subscribe(self.on_seat_position_change)
 
     @subscribe_topic(SET_DRIVER_TOPIC)
     async def on_set_driver_received(self, data_str: str) -> None:
@@ -68,6 +73,15 @@ class DeepPurpleApp(VehicleApp):
         )
 
         await self.publish_mqtt_event(response_topic, json.dumps(response_data))
+
+    async def on_seat_position_change(self, data: DataPointReply):
+        """This will be executed when receiving a new seat position update."""
+        seat_position = data.get(self.Vehicle.Cabin.Seat.Row1.Pos1).value
+
+        await self.publish_mqtt_event(
+            GET_SEAT_POSITION_TOPIC,
+            str(seat_position),
+        )
 
 
 async def main():
