@@ -1,8 +1,11 @@
-> Note:
-This is a template repository to kickstart the creation of a Python Vehicle App. Please create your own repository from this template repository by clicking the green button `Use this template`.
+# DeepPurple Driver Welcome
+Welcome to the results of our BCX2022 hackathon! Here you will find:
+* A nodered app for drivers to trigger the car for two drivers, "Driver A" and "Driver B".
+* A Velocitas vehicle app for controling seats and lights in the car based on which driver is being welcomed.
 
-# Vehicle App Development using Python
+In the demo, this app is used in conjunction with Kuksa for controlling the actual hardware.
 
+## Velocitas Info
 ![CI Workflow](https://github.com/eclipse-velocitas/vehicle-app-python-template/actions/workflows/ci.yml/badge.svg#branch=main)
 [![License: Apache](https://img.shields.io/badge/License-Apache-yellow.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 
