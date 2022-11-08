@@ -14,7 +14,7 @@
 			"presentation": {
 				"close": true,
 				"reveal": "never"
-			},
+			}
 		},
 		{
 			"label": "dapr-VehicleApp-stop",
@@ -25,7 +25,7 @@
 			"presentation": {
 				"close": true,
 				"reveal": "never"
-			},
+			}
 		},
 		{
 			"label": "Local - Ensure Dapr",
@@ -97,7 +97,7 @@
 			"type": "shell",
 			"command": "./.vscode/scripts/runtime/local/run-vehicledatabroker-cli.sh",
 			"group": "none",
-			"isBackground": false,
+			"isBackground": false
 		},
 		{
 			"label": "Local - VehicleServices",
@@ -163,7 +163,8 @@
 				"Local - VehicleServices",
 				"Local - FeederCan"
 			],
-			"dependsOrder": "sequence"
+			"dependsOrder": "sequence",
+			"problemMatcher": []
 		},
 		{
 			"label": "Local - VehicleApp (Dapr run)",
@@ -204,7 +205,6 @@
 			"group": "none",
 			"presentation": {
 				"reveal": "always",
-				//"panel": "dedicated",
 				"clear": true,
 				"close": false
 			}
@@ -217,7 +217,6 @@
 			"group": "none",
 			"presentation": {
 				"reveal": "always",
-				//"panel": "dedicated",
 				"clear": true,
 				"close": false
 			},
@@ -236,7 +235,7 @@
 				"panel": "dedicated",
 				"clear": true,
 				"close": false
-			},
+			}
 		},
 		{
 			"label": "K3D - Deploy VehicleApp",
@@ -304,7 +303,7 @@
 			"label": "Import example app from SDK",
 			"detail": "Import example app from SDK",
 			"type": "shell",
-			"command": "./.vscode/scripts/runtime/utils/import-example-app.sh ${input:exampleApp}",
+			"command": "./.vscode/scripts/runtime/utils/import-example-app.sh ${input:exampleApp}"
 		}
 	],
 	"inputs": [
