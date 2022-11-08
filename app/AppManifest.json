@@ -1,6 +1,6 @@
 [
     {
-        "Name": "deeppurple",
+        "Name": "seatadjuster",
         "Port": 50008,
         "DAPR_GRPC_PORT": 50001,
         "Dockerfile": "./app/Dockerfile",
@@ -26,11 +26,16 @@
                 {
                     "name": "feedercan",
                     "image": "ghcr.io/eclipse/kuksa.val.feeders/dbc2val",
-                    "version": "v0.1.1"
+                    "version": "v0.1.0"
+                },
+                {
+                    "name": "nodered",
+                    "image": "nodered/node-red",
+                    "version": "latest"
                 }
             ],
             "python": {
-                "version": "3.10"
+                "version": "3.9"
             },
             "dapr": {
                 "cli": {
