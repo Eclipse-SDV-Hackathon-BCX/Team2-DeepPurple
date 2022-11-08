@@ -45,9 +45,7 @@ class DeepPurpleApp(VehicleApp):
 
     async def on_start(self):
         logger.info("on_start")
-        await self.Vehicle.Cabin.Seat.Row1.Pos1.Height.set(
-            int(data["preferredPosition"])
-        )
+        await self.Vehicle.Cabin.Seat.Row1.Pos1.Height.set(0)
 
     @subscribe_topic(SET_DRIVER_TOPIC)
     async def on_set_driver_received(self, data_str: str) -> None:
