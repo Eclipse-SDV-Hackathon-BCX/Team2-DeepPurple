@@ -14,18 +14,17 @@
 
 
 # pylint: disable=C0103, C0413, E1101
-
 import asyncio
-import json
 import logging
 import signal
+import time
 
 from sdv.util.log import (  # type: ignore
     get_opentelemetry_log_factory,
     get_opentelemetry_log_format,
 )
 from sdv.vdb.subscriptions import DataPointReply
-from sdv.vehicle_app import VehicleApp, subscribe_topic
+from sdv.vehicle_app import VehicleApp  # , subscribe_topic
 from sdv_model import Vehicle, vehicle  # type: ignore
 
 # Configure the VehicleApp logger with the necessary log config and level.
@@ -35,14 +34,14 @@ logging.getLogger().setLevel("DEBUG")
 logger = logging.getLogger(__name__)
 
 
-class Dp2App(VehicleApp):
+class DeepPurpleApp(VehicleApp):
+    """BCX2022 Hackathon"""
+
     def __init__(self, vehicle_client: Vehicle):
         super().__init__()
         self.Vehicle = vehicle_client
 
     async def on_start(self):
-        print = plugins.Terminal.print
-
         logger.info("Reset")
 
         await self.Vehicle.Cabin.Door.Row1.Left.IsOpen.set(False)
@@ -51,13 +50,13 @@ class Dp2App(VehicleApp):
 
         await self.Vehicle.Body.Lights.IsBackupOn.subscribe(self.onDriverActivation)
 
-        await aio.sleep(1)
+        time.sleep(1)
 
-        await aio.sleep(3)
+        time.sleep(3)
 
         await self.Vehicle.Cabin.Door.Row1.Left.IsOpen.set(False)
         await self.Vehicle.Cabin.Lights.IsDomeOn.set(False)
-        await aio.sleep(3)
+        time.sleep(3)
 
         await self.Vehicle.Cabin.Door.Row1.Left.IsOpen.set(False)
 
@@ -78,8 +77,8 @@ class Dp2App(VehicleApp):
 
 async def main():
 
-    logger.info("Starting Dp2App...")
-    vehicle_app = Dp2App(vehicle)
+    logger.info("Starting DeepPurpleApp...")
+    vehicle_app = DeepPurpleApp(vehicle)
     await vehicle_app.run()
 
 
