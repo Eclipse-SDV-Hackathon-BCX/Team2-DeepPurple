@@ -15,6 +15,7 @@
 
 # pylint: disable=C0103, C0413, E1101
 import asyncio
+import json
 import logging
 import signal
 import time
@@ -24,7 +25,7 @@ from sdv.util.log import (  # type: ignore
     get_opentelemetry_log_format,
 )
 from sdv.vdb.subscriptions import DataPointReply
-from sdv.vehicle_app import VehicleApp  # , subscribe_topic
+from sdv.vehicle_app import VehicleApp, subscribe_topic
 from sdv_model import Vehicle, vehicle  # type: ignore
 
 # Configure the VehicleApp logger with the necessary log config and level.
@@ -32,6 +33,8 @@ logging.setLogRecordFactory(get_opentelemetry_log_factory())
 logging.basicConfig(format=get_opentelemetry_log_format())
 logging.getLogger().setLevel("DEBUG")
 logger = logging.getLogger(__name__)
+
+SET_DRIVER_TOPIC = "deeppurple/setDriver"
 
 
 class DeepPurpleApp(VehicleApp):
@@ -48,7 +51,7 @@ class DeepPurpleApp(VehicleApp):
 
         await self.Vehicle.Body.Lights.IsBackupOn.set(False)
 
-        await self.Vehicle.Body.Lights.IsBackupOn.subscribe(self.onDriverActivation)
+        # await self.Vehicle.Body.Lights.IsBackupOn.subscribe(self.onDriverActivation)
 
         time.sleep(1)
 
@@ -60,19 +63,40 @@ class DeepPurpleApp(VehicleApp):
 
         await self.Vehicle.Cabin.Door.Row1.Left.IsOpen.set(False)
 
-        logger.info("Finished")
+    @subscribe_topic(SET_DRIVER_TOPIC)
+    async def on_set_driver_received(self, data_str: str) -> None:
+        # Use the logger with the preferred log level (e.g. debug, info, error, etc)
+        logger.info(
+            "PubSub event for the Topic: %s -> is received with the data: %s",
+            SET_DRIVER_TOPIC,
+            data_str,
+        )
 
-    async def onDriverActivation(self, data: DataPointReply):
-        isBackupOn = data.get(self.Vehicle.Body.Lights.IsBackupOn).value
-        logger.info("Opening Car Door")
-        await self.Vehicle.Cabin.Door.Row1.Left.IsOpen.set(True)
-        await self.Vehicle.Cabin.Lights.IsDomeOn.set(True)
-        if not isBackupOn:
-            logger.info("Activating driver 1")
-            await self.Vehicle.Cabin.Seat.Row1.Pos1.Height.set(0)
-        else:
-            logger.info("Activation driver 2")
-            await self.Vehicle.Cabin.Seat.Row1.Pos1.Height.set(100)
+        data = json.loads(data_str)
+
+        response_topic = SET_DRIVER_TOPIC + "/response"
+        response_data = {
+            "requestId": data["requestId"],
+            "driverId": data["driverId"],
+            "status": 0,
+        }
+        await self.Vehicle.Cabin.Seat.Row1.Pos1.Height.set(
+            int(data["preferredPosition"])
+        )
+
+        await self.publish_mqtt_event(response_topic, json.dumps(response_data))
+
+    # async def onDriverActivation(self, data: DataPointReply):
+    #     isBackupOn = data.get(self.Vehicle.Body.Lights.IsBackupOn).value
+    #     logger.info("Opening Car Door")
+    #     await self.Vehicle.Cabin.Door.Row1.Left.IsOpen.set(True)
+    #     await self.Vehicle.Cabin.Lights.IsDomeOn.set(True)
+    #     if not isBackupOn:
+    #         logger.info("Activating driver 1")
+    #         await self.Vehicle.Cabin.Seat.Row1.Pos1.Height.set(0)
+    #     else:
+    #         logger.info("Activation driver 2")
+    #         await self.Vehicle.Cabin.Seat.Row1.Pos1.Height.set(100)
 
 
 async def main():
