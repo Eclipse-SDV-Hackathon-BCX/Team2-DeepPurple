@@ -44,15 +44,14 @@ class DeepPurpleApp(VehicleApp):
     def __init__(self, vehicle_client: Vehicle):
         super().__init__()
         self.Vehicle = vehicle_client
+        self.driverSeat = self.Vehicle.Cabin.Seat.Row1.Pos1
 
     async def on_start(self):
         logger.info("on_start")
-        await self.Vehicle.Cabin.Seat.Row1.Pos1.Position.set(0)
+        await self.driverSeat.Position.set(0)
 
         # Callback
-        await self.Vehicle.Cabin.Seat.Row1.Pos1.Position.subscribe(
-            self.on_seat_position_change
-        )
+        await self.driverSeat.Position.subscribe(self.on_seat_position_change)
 
     @subscribe_topic(SET_DRIVER_TOPIC)
     async def on_set_driver_received(self, data_str: str) -> None:
@@ -71,9 +70,7 @@ class DeepPurpleApp(VehicleApp):
             "driverId": data["driverId"],
             "status": 0,
         }
-        await self.Vehicle.Cabin.Seat.Row1.Pos1.Position.set(
-            int(data["preferredPosition"])
-        )
+        await self.driverSeat.Position.set(int(data["preferredPosition"]))
 
         lighting_profile = int(data["lightingProfile"])
 
@@ -111,7 +108,7 @@ class DeepPurpleApp(VehicleApp):
 
     async def on_seat_position_change(self, data: DataPointReply):
         """This will be executed when receiving a new seat position update."""
-        seat_position = data.get(self.Vehicle.Cabin.Seat.Row1.Pos1.Position).value
+        seat_position = data.get(self.driverSeat.Position.value
 
         await self.publish_mqtt_event(
             GET_SEAT_POSITION_TOPIC,
