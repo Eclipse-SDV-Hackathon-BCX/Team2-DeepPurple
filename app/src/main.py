@@ -96,7 +96,7 @@ class DeepPurpleApp(VehicleApp):
             time.sleep(1)
 
             await self.Vehicle.Body.Lights.IsBackupOn.set(True)
-            time.sleep(10.4)
+            time.sleep(0.4)
             await self.Vehicle.Body.Lights.IsBackupOn.set(False)
             time.sleep(1)
 
