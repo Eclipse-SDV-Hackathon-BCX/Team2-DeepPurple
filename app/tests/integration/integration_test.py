@@ -19,39 +19,37 @@ import pytest
 from sdv.test.inttesthelper import IntTestHelper
 from sdv.test.mqtt_util import MqttClient
 
-# GET_SPEED_REQUEST_TOPIC = "sampleapp/getSpeed"
-# GET_SPEED_RESPONSE_TOPIC = "sampleapp/getSpeed/response"
+SET_DRIVER_TOPIC = "deeppurple/setDriver"
+SET_DRIVER_TOPIC_RESP = SET_DRIVER_TOPIC + "/response"
+
+GET_SEAT_POSITION_TOPIC = "deeppurple/getSeatPosition"
+GET_SEAT_POSITION_TOPIC_RESP = GET_SEAT_POSITION_TOPIC + "/response"
 
 
 @pytest.mark.asyncio
-async def test_get_current_speed():
+async def test_set_driver():
     mqtt_client = MqttClient()
     inttesthelper = IntTestHelper()
     print(f"{mqtt_client} can be used when your app compiles succesfully!")
     print(f"{inttesthelper} can be used when your app compiles succesfully!")
 
-    # When your app compiles succesfully use the inttesthelper to get viable responses
-    response = "{}"
-    # response = await inttesthelper.set_float_datapoint(
-    #     name="Vehicle.Speed", value=0
+    # response = await inttesthelper.set_uint16_datapoint(
+    #     name="Vehicle.Cabin.Seat.Row1.Pos1.Position", value=0
     # )
-
     # assert len(response.errors) == 0
 
-    # response = mqtt_client.publish_and_wait_for_response(
-    #     request_topic=GET_SPEED_REQUEST_TOPIC,
-    #     response_topic=GET_SPEED_RESPONSE_TOPIC,
-    #     payload={},
-    # )
+    response_str = mqtt_client.publish_and_wait_for_response(
+        request_topic=SET_DRIVER_TOPIC,
+        response_topic=SET_DRIVER_TOPIC_RESP,
+        payload={
+            "driverId": "DriverA",
+            "requestId": 1,
+            "preferredPosition": 42,
+            "lightingProfile": 1,
+        },
+    )
 
-    body = json.loads(response)
-    # add expected message to get it assert
-    expected_message = "Current Speed = 0.0"
+    response = json.loads(response_str)
+    print(f"Received response: {response}")
 
-    print(f"Received response: {body}")
-    print(f"Expected message: {expected_message}")
-
-    # Uncomment to test the behaviour of the SampleApp as provided by
-    #     the template repository:
-    # assert body["result"]["status"] == 0
-    # assert body["result"]["message"] == expected_message
+    assert response == {"driverId": "DriverA", "requestId": 1, "status": 0}
