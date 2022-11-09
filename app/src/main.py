@@ -75,14 +75,14 @@ class DeepPurpleApp(VehicleApp):
         lighting_profile = int(data["lightingProfile"])
 
         if lighting_profile == 1:
-            await self.Vehicle.Body.Lights.IsRunningOn.set(True)
-            time.sleep(0.4)
-            await self.Vehicle.Body.Lights.IsRunningOn.set(False)
-            time.sleep(1)
-
             await self.Vehicle.Body.Lights.IsBrakeOn.set(True)
             time.sleep(0.4)
             await self.Vehicle.Body.Lights.IsBrakeOn.set(False)
+            time.sleep(1)
+
+            await self.Vehicle.Body.Lights.IsBackupOn.set(True)
+            time.sleep(0.4)
+            await self.Vehicle.Body.Lights.IsBackupOn.set(False)
             time.sleep(1)
 
             await self.Vehicle.Body.Lights.IsLeftIndicatorOn.set(True)
@@ -95,14 +95,15 @@ class DeepPurpleApp(VehicleApp):
             await self.Vehicle.Body.Lights.IsLeftIndicatorOn.set(False)
             time.sleep(1)
 
+            await self.Vehicle.Body.Lights.IsBackupOn.set(True)
+            time.sleep(10.4)
+            await self.Vehicle.Body.Lights.IsBackupOn.set(False)
+            time.sleep(1)
+
             await self.Vehicle.Body.Lights.IsBrakeOn.set(True)
             time.sleep(0.4)
             await self.Vehicle.Body.Lights.IsBrakeOn.set(False)
             time.sleep(1)
-
-            await self.Vehicle.Body.Lights.IsRunningOn.set(True)
-            time.sleep(0.4)
-            await self.Vehicle.Body.Lights.IsRunningOn.set(False)
 
         await self.publish_mqtt_event(response_topic, json.dumps(response_data))
 
