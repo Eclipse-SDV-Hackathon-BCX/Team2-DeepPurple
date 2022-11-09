@@ -108,7 +108,7 @@ class DeepPurpleApp(VehicleApp):
 
     async def on_seat_position_change(self, data: DataPointReply):
         """This will be executed when receiving a new seat position update."""
-        seat_position = data.get(self.driverSeat.Position.value
+        seat_position = data.get(self.driverSeat.Position).value
 
         await self.publish_mqtt_event(
             GET_SEAT_POSITION_TOPIC,
