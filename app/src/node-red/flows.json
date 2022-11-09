@@ -1,0 +1,698 @@
+[
+    {
+        "id": "970a9de6e92c2936",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "738f692a5107f5eb",
+        "type": "tab",
+        "label": "BCX22SDV Hackchallenge 2",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "3a93bfa4.83653",
+        "type": "tab",
+        "label": "BCX22SDV Fleet",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "d2dfde80f44afd66",
+        "type": "mqtt-broker",
+        "name": "mqtt-10.52.204.72",
+        "broker": "10.52.204.72",
+        "port": "31883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "e8d8423da8334d40",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#5c3566",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#5c3566",
+                    "edited": true
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#5c3566",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#333333",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#894f98",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#5c3566",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "BCX22SDV Deep Purple Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD.MM.YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 8,
+                "gy": 8,
+                "cx": 8,
+                "cy": 8,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "8787d3427c2c46ef",
+        "type": "ui_tab",
+        "name": "Driver profile selection",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "9357b637aa2b57f1",
+        "type": "ui_group",
+        "name": "BCX22SDV Team Deep Purple - Driver Selection",
+        "tab": "8787d3427c2c46ef",
+        "order": 1,
+        "disp": false,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "f1cca47de55b16e5",
+        "type": "mqtt-broker",
+        "name": "vss",
+        "broker": "localhost",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "2e4b5aa8.f5e826",
+        "type": "ui_group",
+        "name": "Basic",
+        "tab": "155b6500.dae29b",
+        "order": 2,
+        "disp": false,
+        "width": 10,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "412ed4b3.5566bc",
+        "type": "ui_group",
+        "name": "Grafik",
+        "tab": "155b6500.dae29b",
+        "order": 3,
+        "disp": false,
+        "width": "12",
+        "collapse": false
+    },
+    {
+        "id": "155b6500.dae29b",
+        "type": "ui_tab",
+        "name": "Fleet monitor",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "f7c9bcbe8251cd53",
+        "type": "ui_spacer",
+        "z": "3a93bfa4.83653",
+        "name": "spacer",
+        "group": "2e4b5aa8.f5e826",
+        "order": 2,
+        "width": 4,
+        "height": 1
+    },
+    {
+        "id": "d344540201fb4950",
+        "type": "ui_spacer",
+        "z": "3a93bfa4.83653",
+        "name": "spacer",
+        "group": "2e4b5aa8.f5e826",
+        "order": 3,
+        "width": 4,
+        "height": 1
+    },
+    {
+        "id": "7330bf03630514e1",
+        "type": "ui_spacer",
+        "z": "3a93bfa4.83653",
+        "name": "spacer",
+        "group": "2e4b5aa8.f5e826",
+        "order": 4,
+        "width": 4,
+        "height": 1
+    },
+    {
+        "id": "19828d6ed0f7879c",
+        "type": "ui_spacer",
+        "z": "3a93bfa4.83653",
+        "name": "spacer",
+        "group": "2e4b5aa8.f5e826",
+        "order": 5,
+        "width": 4,
+        "height": 1
+    },
+    {
+        "id": "83235d52b0ab407b",
+        "type": "ui_spacer",
+        "z": "3a93bfa4.83653",
+        "name": "spacer",
+        "group": "2e4b5aa8.f5e826",
+        "order": 7,
+        "width": 4,
+        "height": 1
+    },
+    {
+        "id": "aa9a475458a81b01",
+        "type": "ui_spacer",
+        "z": "3a93bfa4.83653",
+        "name": "spacer",
+        "group": "2e4b5aa8.f5e826",
+        "order": 8,
+        "width": 4,
+        "height": 1
+    },
+    {
+        "id": "3d36b573af92c897",
+        "type": "ui_spacer",
+        "z": "3a93bfa4.83653",
+        "name": "spacer",
+        "group": "2e4b5aa8.f5e826",
+        "order": 9,
+        "width": 4,
+        "height": 1
+    },
+    {
+        "id": "d627c8624a9051d6",
+        "type": "ui_spacer",
+        "z": "3a93bfa4.83653",
+        "name": "spacer",
+        "group": "2e4b5aa8.f5e826",
+        "order": 10,
+        "width": 4,
+        "height": 1
+    },
+    {
+        "id": "0f26cc4f21c67d6c",
+        "type": "ui_spacer",
+        "z": "3a93bfa4.83653",
+        "name": "spacer",
+        "group": "2e4b5aa8.f5e826",
+        "order": 11,
+        "width": 4,
+        "height": 1
+    },
+    {
+        "id": "ad38831cca8208ac",
+        "type": "ui_spacer",
+        "z": "3a93bfa4.83653",
+        "name": "spacer",
+        "group": "2e4b5aa8.f5e826",
+        "order": 12,
+        "width": 4,
+        "height": 1
+    },
+    {
+        "id": "670d57a63ae2922f",
+        "type": "comment",
+        "z": "738f692a5107f5eb",
+        "name": "Driver A",
+        "info": "Select driver setting A",
+        "x": 170,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "41def383c624d0dd",
+        "type": "mqtt out",
+        "z": "738f692a5107f5eb",
+        "name": "",
+        "topic": "deeppurple/setDriver",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "d2dfde80f44afd66",
+        "x": 1060,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "3c303b166d778f85",
+        "type": "comment",
+        "z": "738f692a5107f5eb",
+        "name": "Driver B",
+        "info": "Select driver setting B",
+        "x": 170,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "889a35b179857909",
+        "type": "mqtt out",
+        "z": "738f692a5107f5eb",
+        "name": "",
+        "topic": "deeppurple/setDriver",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "d2dfde80f44afd66",
+        "x": 1040,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "78a32456429a467d",
+        "type": "inject",
+        "z": "738f692a5107f5eb",
+        "d": true,
+        "name": "Select Driver A",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"driverId\":\"driverA\",\"requestId\":1,\"preferredPosition\":100}",
+        "payloadType": "json",
+        "x": 340,
+        "y": 100,
+        "wires": [
+            [
+                "41def383c624d0dd"
+            ]
+        ]
+    },
+    {
+        "id": "2e86029ae9b5404c",
+        "type": "mqtt in",
+        "z": "738f692a5107f5eb",
+        "name": "",
+        "topic": "/driver-id",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "d2dfde80f44afd66",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 180,
+        "y": 400,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "3b2b386ad8683406",
+        "type": "debug",
+        "z": "738f692a5107f5eb",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1000,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "81c942d14cc46dde",
+        "type": "inject",
+        "z": "738f692a5107f5eb",
+        "d": true,
+        "name": "Select Driver B",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"driverId\":\"driverB\",\"requestId\":1,\"preferredPosition\":500}",
+        "payloadType": "json",
+        "x": 340,
+        "y": 180,
+        "wires": [
+            [
+                "889a35b179857909"
+            ]
+        ]
+    },
+    {
+        "id": "168e3a463c2b7d55",
+        "type": "json",
+        "z": "738f692a5107f5eb",
+        "name": "",
+        "property": "payload",
+        "action": "obj",
+        "pretty": false,
+        "x": 690,
+        "y": 540,
+        "wires": [
+            [
+                "4aecd332bd6c5533",
+                "3b2b386ad8683406"
+            ]
+        ]
+    },
+    {
+        "id": "92255920b8913a8b",
+        "type": "mqtt in",
+        "z": "738f692a5107f5eb",
+        "name": "",
+        "topic": "deeppurple/setDriver/response",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "d2dfde80f44afd66",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 350,
+        "y": 520,
+        "wires": [
+            [
+                "3b2b386ad8683406",
+                "168e3a463c2b7d55"
+            ]
+        ]
+    },
+    {
+        "id": "4aecd332bd6c5533",
+        "type": "ui_text",
+        "z": "738f692a5107f5eb",
+        "group": "9357b637aa2b57f1",
+        "order": 3,
+        "width": 6,
+        "height": 4,
+        "name": "",
+        "label": "Current Driver: ",
+        "format": "{{msg.payload.driverId}}",
+        "layout": "row-center",
+        "className": "",
+        "x": 1000,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "aa093957ad7c0ee5",
+        "type": "ui_button",
+        "z": "738f692a5107f5eb",
+        "name": "",
+        "group": "9357b637aa2b57f1",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Driver A",
+        "tooltip": "Select Driver A",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "{\"driverId\":\"DriverA\",\"requestId\":1,\"preferredPosition\":100, \"lightingProfile\":1}",
+        "payloadType": "json",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 320,
+        "y": 40,
+        "wires": [
+            [
+                "41def383c624d0dd"
+            ]
+        ]
+    },
+    {
+        "id": "eb61b79050cc4ad7",
+        "type": "ui_button",
+        "z": "738f692a5107f5eb",
+        "name": "",
+        "group": "9357b637aa2b57f1",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Driver B",
+        "tooltip": "Activate Driver B ",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "{\"driverId\":\"DriverB\",\"requestId\":1,\"preferredPosition\":500,\"lightingProfile\":1}",
+        "payloadType": "json",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 320,
+        "y": 240,
+        "wires": [
+            [
+                "889a35b179857909"
+            ]
+        ]
+    },
+    {
+        "id": "f231fe1cf28ce2cd",
+        "type": "mqtt in",
+        "z": "3a93bfa4.83653",
+        "name": "Seat Position",
+        "topic": "deeppurple/getSeatPosition",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "f1cca47de55b16e5",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 150,
+        "y": 180,
+        "wires": [
+            [
+                "3afcd11670a9c5f1"
+            ]
+        ]
+    },
+    {
+        "id": "35008420a3b18321",
+        "type": "ui_gauge",
+        "z": "3a93bfa4.83653",
+        "name": "",
+        "group": "2e4b5aa8.f5e826",
+        "order": 6,
+        "width": "10",
+        "height": 6,
+        "gtype": "compass",
+        "title": "Current seat position:",
+        "label": "mm",
+        "format": "{{msg.payload.position}}",
+        "min": 0,
+        "max": "1000",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 860,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "3afcd11670a9c5f1",
+        "type": "json",
+        "z": "3a93bfa4.83653",
+        "name": "",
+        "property": "payload",
+        "action": "obj",
+        "pretty": false,
+        "x": 550,
+        "y": 180,
+        "wires": [
+            [
+                "35008420a3b18321"
+            ]
+        ]
+    },
+    {
+        "id": "4d45f854a44078b2",
+        "type": "json",
+        "z": "3a93bfa4.83653",
+        "name": "",
+        "property": "payload",
+        "action": "obj",
+        "pretty": false,
+        "x": 550,
+        "y": 360,
+        "wires": [
+            [
+                "6f746a43a668df1d"
+            ]
+        ]
+    },
+    {
+        "id": "e3fbb3a08092a891",
+        "type": "mqtt in",
+        "z": "3a93bfa4.83653",
+        "name": "",
+        "topic": "deeppurple/setDriver/response",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "d2dfde80f44afd66",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 210,
+        "y": 360,
+        "wires": [
+            [
+                "4d45f854a44078b2"
+            ]
+        ]
+    },
+    {
+        "id": "6f746a43a668df1d",
+        "type": "ui_text",
+        "z": "3a93bfa4.83653",
+        "group": "2e4b5aa8.f5e826",
+        "order": 1,
+        "width": "10",
+        "height": 4,
+        "name": "",
+        "label": "Current Driver: ",
+        "format": "{{msg.payload.driverId}}",
+        "layout": "col-center",
+        "className": "",
+        "x": 840,
+        "y": 360,
+        "wires": []
+    }
+]
