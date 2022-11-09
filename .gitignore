@@ -379,3 +379,7 @@ venv/
 # Mac files
 .DS_Store
 .npm
+
+# Node Red
+
+.backup

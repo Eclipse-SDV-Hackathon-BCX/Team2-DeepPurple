@@ -23,6 +23,8 @@ ROOT_DIRECTORY=$( realpath "$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P 
 UTILS_DIRECTORY="$ROOT_DIRECTORY/.vscode/scripts/runtime/utils"
 source $UTILS_DIRECTORY/get-appmanifest-data.sh
 
+NODERED_DATA="$ROOT_DIRECTORY/app/src/node-red"
+
 NODERED_PORT='1880'
 #export DATABROKER_GRPC_PORT='52001'
 #export RUST_LOG="info,databroker=debug,vehicle_data_broker=debug"
@@ -35,7 +37,7 @@ then
 fi
 
 docker run \
-    -v $UTILS_DIRECTORY/nodered:/data \
+    -v $NODERED_DATA:/data \
     -p $NODERED_PORT:$NODERED_PORT \
     --network host \
     $NODERED_IMAGE:$NODERED_TAG
