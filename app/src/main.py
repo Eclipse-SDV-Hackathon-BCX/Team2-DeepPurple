@@ -80,24 +80,24 @@ class DeepPurpleApp(VehicleApp):
             await self.Vehicle.Body.Lights.IsRunningOn.set(False)
             time.sleep(1)
 
-            await self.Vehicle.Body.Lights.IsBreakOn(True)
+            await self.Vehicle.Body.Lights.IsBrakeOn.set(True)
             time.sleep(0.4)
-            await self.Vehicle.Body.Lights.IsBreakOn(False)
+            await self.Vehicle.Body.Lights.IsBrakeOn.set(False)
             time.sleep(1)
 
-            await self.Vehicle.Body.Lights.IsLeftIndicatorOn(True)
+            await self.Vehicle.Body.Lights.IsLeftIndicatorOn.set(True)
             time.sleep(0.4)
-            await self.Vehicle.Body.Lights.IsLeftIndicatorOn(False)
+            await self.Vehicle.Body.Lights.IsLeftIndicatorOn.set(False)
 
         elif lighting_profile == 2:
-            await self.Vehicle.Body.Lights.IsLeftIndicatorOn(True)
+            await self.Vehicle.Body.Lights.IsLeftIndicatorOn.set(True)
             time.sleep(0.4)
-            await self.Vehicle.Body.Lights.IsLeftIndicatorOn(False)
+            await self.Vehicle.Body.Lights.IsLeftIndicatorOn.set(False)
             time.sleep(1)
 
-            await self.Vehicle.Body.Lights.IsBreakOn(True)
+            await self.Vehicle.Body.Lights.IsBrakeOn.set(True)
             time.sleep(0.4)
-            await self.Vehicle.Body.Lights.IsBreakOn(False)
+            await self.Vehicle.Body.Lights.IsBrakeOn.set(False)
             time.sleep(1)
 
             await self.Vehicle.Body.Lights.IsRunningOn.set(True)
