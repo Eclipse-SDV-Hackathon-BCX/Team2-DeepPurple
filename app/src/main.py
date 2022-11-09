@@ -50,7 +50,9 @@ class DeepPurpleApp(VehicleApp):
         await self.Vehicle.Cabin.Seat.Row1.Pos1.Position.set(0)
 
         # Callback
-        await self.Vehicle.Cabin.Seat.Row1.Pos1.subscribe(self.on_seat_position_change)
+        await self.Vehicle.Cabin.Seat.Row1.Pos1.Position.subscribe(
+            self.on_seat_position_change
+        )
 
     @subscribe_topic(SET_DRIVER_TOPIC)
     async def on_set_driver_received(self, data_str: str) -> None:
